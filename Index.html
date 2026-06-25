@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>عداد التسبيح</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:#bfc0c7;
+    font-family:Tahoma, Arial, sans-serif;
+    min-height:100vh;
+    text-align:center;
+}
+
+.container{
+    width:100%;
+    padding-top:80px;
+}
+
+.reset{
+    width:100px;
+    height:100px;
+    margin:0 auto 20px;
+    background:#8b8c96;
+    border-radius:20px;
+    color:white;
+    font-size:60px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    cursor:pointer;
+    user-select:none;
+}
+
+.counter{
+    font-size:130px;
+    color:black;
+    line-height:1;
+    margin-bottom:20px;
+}
+
+.text{
+    font-size:48px;
+    color:rgb(56, 56, 56);
+    margin-bottom:30px;
+}
+
+.tap-btn{
+    width:90%;
+    height:65vh;
+    margin:auto;
+    background:#1a1a1a;
+    border:none;
+    border-radius:40px;
+    box-shadow:0 5px 15px rgba(0,0,0,.3);
+    position:relative;
+    cursor:pointer;
+    transition:transform .25s ease;
+}
+
+.tap-btn::before,
+.tap-btn::after{
+    content:"";
+    position:absolute;
+    background:white;
+    border-radius:20px;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%);
+}
+
+.tap-btn::before{
+    width:220px;
+    height:26px;
+}
+
+.tap-btn::after{
+    width:26px;
+    height:220px;
+}
+
+.tap-btn:active{
+    transform:scale(.95);
+    transition:.25s ease;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="reset" onclick="resetCounter()">↻</div>
+
+    <div class="counter" id="counter">0</div>
+
+    <div class="text">أذكر الله</div>
+
+    <button class="tap-btn" onclick="addCount()"></button>
+
+</div>
+
+<script>
+
+let count = 0;
+let locked = false;
+
+function addCount(){
+
+    if(locked) return;
+
+    locked = true;
+
+    setTimeout(()=>{
+
+        count++;
+        document.getElementById("counter").textContent = count;
+
+        locked = false;
+
+    },120);
+
+}
+
+function resetCounter(){
+
+    count = 0;
+
+    document.getElementById("counter").textContent = count;
+
+}
+
+</script>
+
+</body>
+</html>
